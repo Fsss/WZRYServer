@@ -1,0 +1,245 @@
+The system is: Linux - 2.6.32-358.el6.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/local/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/hesiyu/WZRYServer/src/CMakeFiles/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/local/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/hesiyu/WZRYServer/src/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/usr/local/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/local/bin/gcc         CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/local/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/local/bin/gcc       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/gcc
+COLLECT_LTO_WRAPPER=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/opt/centos/devtoolset-1.1/root/usr --mandir=/opt/centos/devtoolset-1.1/root/usr/share/man --infodir=/opt/centos/devtoolset-1.1/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --disable-libgcj --with-ppl --with-cloog --with-mpc=/home/centos/rpm/BUILD/gcc-4.7.2-20121015/obj-x86_64-redhat-linux/mpc-install --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20121015 (Red Hat 4.7.2-5) (GCC) 
+COMPILER_PATH=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/../lib64/crtn.o
+gmake[1]: Leaving directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/local/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1]
+  ignore line: [/usr/local/bin/gcc       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/local/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/opt/centos/devtoolset-1.1/root/usr --mandir=/opt/centos/devtoolset-1.1/root/usr/share/man --infodir=/opt/centos/devtoolset-1.1/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --disable-libgcj --with-ppl --with-cloog --with-mpc=/home/centos/rpm/BUILD/gcc-4.7.2-20121015/obj-x86_64-redhat-linux/mpc-install --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20121015 (Red Hat 4.7.2-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/../lib64/crtn.o]
+    arg [/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec] ==> ignore
+    arg [/usr/lib/../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/../lib64/crti.o] ==> ignore
+    arg [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/../lib64/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/opt/centos/devtoolset-1.1/root/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/opt/centos/devtoolset-1.1/root/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/opt/centos/devtoolset-1.1/root/usr/lib64;/lib64;/usr/lib64;/opt/centos/devtoolset-1.1/root/usr/lib]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o
+/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/local/bin/c++          CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
+/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/local/bin/c++        -v CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/c++
+COLLECT_LTO_WRAPPER=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/opt/centos/devtoolset-1.1/root/usr --mandir=/opt/centos/devtoolset-1.1/root/usr/share/man --infodir=/opt/centos/devtoolset-1.1/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --disable-libgcj --with-ppl --with-cloog --with-mpc=/home/centos/rpm/BUILD/gcc-4.7.2-20121015/obj-x86_64-redhat-linux/mpc-install --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20121015 (Red Hat 4.7.2-5) (GCC) 
+COMPILER_PATH=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/../lib64/crtn.o
+gmake[1]: Leaving directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/local/bin/cmake -E cmake_progress_report /home/hesiyu/WZRYServer/src/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/local/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1]
+  ignore line: [/usr/local/bin/c++        -v CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/local/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/opt/centos/devtoolset-1.1/root/usr --mandir=/opt/centos/devtoolset-1.1/root/usr/share/man --infodir=/opt/centos/devtoolset-1.1/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --disable-libgcj --with-ppl --with-cloog --with-mpc=/home/centos/rpm/BUILD/gcc-4.7.2-20121015/obj-x86_64-redhat-linux/mpc-install --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20121015 (Red Hat 4.7.2-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/../lib64/crtn.o]
+    arg [/opt/centos/devtoolset-1.1/root/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec] ==> ignore
+    arg [/usr/lib/../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/../lib64/crti.o] ==> ignore
+    arg [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/opt/centos/devtoolset-1.1/root/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/opt/centos/devtoolset-1.1/root/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/opt/centos/devtoolset-1.1/root/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/opt/centos/devtoolset-1.1/root/usr/lib64;/lib64;/usr/lib64;/opt/centos/devtoolset-1.1/root/usr/lib]
+
+

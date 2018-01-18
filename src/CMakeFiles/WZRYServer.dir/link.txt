@@ -1,0 +1,1 @@
+/usr/local/bin/c++       CMakeFiles/WZRYServer.dir/main.cpp.o  -o WZRYServer -rdynamic Server/libServer.a 

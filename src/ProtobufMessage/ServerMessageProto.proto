@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+package WZRY;
+
+
+message LoginMSG
+{
+    required string username = 1;
+    required string passwd = 2;
+}
+
+message LoginRSPS
+{
+    required int32 type = 1;
+  	required string message = 2;
+}
+
+message RegisterMSG
+{
+    required string newname = 1;
+    required string newpasswd = 2;
+}
+
+message RegisterRSPS
+{
+    required int32 type = 1;
+    required string message = 2;
+}
+
+message MatchMSG
+{
+    required bool isMatch = 1;
+    required int32 type = 2;
+}
+
+message MatchRSPS
+{
+    required bool success = 1;
+    required int32 type = 2;
+}
+
+message ChatMSG
+{
+    required int32 type = 1;
+    required string message = 2;
+}
+
+message ChatRSPS
+{
+    required bool success = 1;
+    required string message = 2;
+}
+
+
+

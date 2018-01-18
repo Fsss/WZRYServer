@@ -1,0 +1,2 @@
+/home/hesiyu/WZRYServer/src/Server/CMakeFiles/Server.dir
+/home/hesiyu/WZRYServer/src/CMakeFiles/WZRYServer.dir

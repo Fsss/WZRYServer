@@ -1,0 +1,54 @@
+
+message LoginMSG
+{
+    string username = 1;
+    string passwd = 2;
+}
+message LoginRSPS
+{
+    int32 type = 1;
+    string message = 2;
+}
+
+
+message RegisterMSG
+{
+    string newname = 1;
+    string newpasswd = 2;
+}
+message RegisterRSPS
+{
+    int32 type = 1;
+    string message = 2;
+}
+
+
+message MatchMSG
+{
+    bool isMatch = 1;
+    int32 type = 2;
+}
+message MatchRSPS
+{
+    bool success = 1;
+    int32 type = 2;
+}
+
+
+message ChatMSG
+{
+    int32 type = 1;
+    string message = 2;
+}
+message ChatRSPS
+{
+    bool success = 1;
+    string message = 2;
+}
+
+// battle
+class MoveMSG
+class MoveRSPS
+
+class SkillMSG
+class SkillRSPS
