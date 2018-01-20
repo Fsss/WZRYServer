@@ -88,28 +88,24 @@ int main()
 
     connect(client_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
 
-    // test serialize
-    LoginResponse aaa;
-    aaa.set_issuccess(true);
-    aaa.set_message("????");
-    size_t lena = aaa.ByteSizeLong();
-    void *msg = malloc(lena);
-    aaa.SerializeToArray(msg, lena);
-
-    LoginRequest bbb;
-    bbb.ParseFromArray(msg, lena);
-    std::cout << bbb.islogin() << "  " << bbb.username() << "  " << bbb.passwd() << "\n";
-
-
 
     // test login
     LoginRequest login;
     login.set_islogin(true);
     login.set_username("123");
-    login.set_passwd("1234");
-    TSend(client_fd, 1, login);
-    Receive(client_fd);
-    
+    login.set_passwd("123");
+
+
+    int cnt = 0;
+    while (true)
+    {
+        printf("the send number = %d\n", ++cnt);
+        TSend(client_fd, 1, login);
+        Receive(client_fd);
+        //sleep(1);
+    }
+
+    /*
     // test login
     login.set_islogin(true);
     login.set_username("Fsss");
@@ -151,14 +147,13 @@ int main()
     regs.set_newpasswd("123");
     TSend(client_fd, 2, regs);
     Receive(client_fd);
-    
 
     while (true)
     {
         cout << "Wait one second!\n";
         sleep(1);
     }
-
+    */
     close(client_fd);
     return 0;
 }
@@ -166,7 +161,7 @@ int main()
 
 /*
 
-g++ -g -pthread -lprotobuf  -Wall -std=c++11 TestClient.cpp WZRYMessageProto.pb.cc -o TestClient
+g++ -g -pthread -lprotobuf -Wall -std=c++11 TestClient.cpp WZRYMessageProto.pb.cc -o TestClient
 
 */
 
