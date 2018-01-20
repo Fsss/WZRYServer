@@ -1,0 +1,7 @@
+{
+    "files.autoGuessEncoding": true,
+    "files.associations": {
+        "type_traits": "cpp",
+        "xutility": "cpp"
+    }
+}

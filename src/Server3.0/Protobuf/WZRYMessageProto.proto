@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package WZRY;
+
+
+message CloseRequest
+{
+}
+
+message LoginRequest
+{
+    bool islogin = 1;
+    string username = 2;
+    string passwd = 3;
+}
+message LoginResponse
+{
+    bool issuccess = 1;
+    string message = 2;
+}
+
+message RegisterRequest
+{
+    string newusername = 1;
+    string newpasswd = 2;
+}
+message RegisterResponse
+{
+    bool issuccess = 1;
+    string message = 2;
+}
+
+message MatchRequest
+{
+    bool ismatch = 1;
+    int32 matchtype = 2;
+}
+message MatchResponse
+{
+    bool issuccess = 1;
+    string matchmessage = 2;
+}
+
+message ChatRequest
+{
+    int32 id = 1;
+    string chatmessage = 2;
+}
+message ChatResponse
+{
+    int32 id = 1;
+    string chatmessage = 2;
+}
+
+message SkillRequest
+{
+    int32 id = 1;
+    int32 skillid = 2;
+}
+message SkillResponse
+{
+    int32 id = 1;
+    int32 skillid = 2;
+}
+

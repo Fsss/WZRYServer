@@ -1,0 +1,8 @@
+
+
+
+
+g++ -g -pthread -lprotobuf  -Wall -std=c++11  main.cpp Epoll.cpp MainServer.cpp MessageProcesser.cpp Server.cpp WZRYMessageProto.pb.cc -o RunServer
+
+
+

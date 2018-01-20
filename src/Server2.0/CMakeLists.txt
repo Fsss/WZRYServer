@@ -17,9 +17,5 @@ g++ -g -pthread -lprotobuf  -Wall -std=c++11  main.cpp Epoll.cpp Player.cpp Serv
 
 
 
-重构：
-    数据格式变为 消息头(长度，协议) 消息体(Message)
-    一个Message处理中心，抽象Server
-    发送和接收改成泛型函数
 
 
