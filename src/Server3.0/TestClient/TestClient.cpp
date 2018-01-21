@@ -22,6 +22,7 @@ void TSend(int sock, int prtc, T message)
     // send len
     int len = htonl(4 + size);
     send(sock, &len, 4, 0);
+    exit(EXIT_FAILURE);
     // send protocol
     prtc = htonl(prtc);
     send(sock, &prtc, 4, 0);
@@ -88,13 +89,23 @@ int main()
 
     connect(client_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
 
+    MatchRequest match;
+    match.set_ismatch(true);
+    match.set_matchtype(2);
+    TSend(client_fd, 3, match);
+    //Receive(client_fd);
+    while (true)
+    {
+        std::cout << "wait a second!\n";
+        sleep(1);
+    }
 
+    /*
     // test login
     LoginRequest login;
     login.set_islogin(true);
     login.set_username("123");
     login.set_passwd("123");
-
 
     int cnt = 0;
     while (true)
@@ -104,7 +115,8 @@ int main()
         Receive(client_fd);
         //sleep(1);
     }
-
+    */
+    
     /*
     // test login
     login.set_islogin(true);

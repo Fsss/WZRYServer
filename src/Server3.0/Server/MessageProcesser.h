@@ -17,16 +17,7 @@ namespace WZRY
         MessageProcesser(Server*);
         ~MessageProcesser();
         bool RecvPeek(int);
-        template <typename M>
-        void Send(int sock, Protocol protocol, M response)
-        {
-            size_t sz = response.ByteSizeLong();
-            void *buff = malloc(sz);
-            response.SerializeToArray(buff, sz);
-            std::cout << "the message size = " << sz << "\n";
-            Send(sock, static_cast<int>(protocol), buff, sz);
-            free(buff);
-        }
+        void Send(int, Protocol, ::google::protobuf::Message*);
     private:
         MessageProcesser(const MessageProcesser&) = delete;
         MessageProcesser& operator=(const MessageProcesser&) = delete;

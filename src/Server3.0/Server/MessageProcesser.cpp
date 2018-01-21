@@ -10,7 +10,7 @@
 #include <string.h>
 #include <arpa/inet.h>
 
-
+#include <signal.h>
 
 namespace WZRY
 {
@@ -23,8 +23,8 @@ namespace WZRY
 
     MessageProcesser::~MessageProcesser()
     {
-        delete[] m_readBuff;
         delete[] m_writeBuff;
+        delete[] m_readBuff;
     }
 
     int MessageProcesser::ReadN(int sock, void* buf, size_t cnt)
@@ -101,7 +101,6 @@ namespace WZRY
             /// receive protocol
             memcpy(&protocol, m_readBuff + 4, 4);
             protocol = ntohl(protocol);
-
             /// 打印长度和协议
             printf("message length : %d    protocol : %d\n", len, protocol);
 
@@ -141,25 +140,63 @@ namespace WZRY
                     m_server->Response(sock, std::move(match));
                     break;
                 }
-            case Protocol::CHAT:
+            case Protocol::MOVE:
                 {
-                    ChatRequest chat;
-                    chat.ParseFromArray(m_readBuff + 8, len - 4);
-                    m_server->Response(sock, std::move(chat));
+                    MoveData move;
+                    move.ParseFromArray(m_readBuff + 8, len - 4);
+                    m_server->Response(sock, std::move(move));
                     break;
                 }
             case Protocol::SKILL:
                 {
-                    SkillRequest skill;
-                        skill.ParseFromArray(m_readBuff + 8, len - 4);
-                        m_server->Response(sock, std::move(skill));
+                    SkillData skill;
+                    skill.ParseFromArray(m_readBuff + 8, len - 4);
+                    m_server->Response(sock, std::move(skill));
+                    break;
+                }
+            case Protocol::CHAT:
+                {
+                    ChatData chat;
+                    chat.ParseFromArray(m_readBuff + 8, len - 4);
+                    m_server->Response(sock, std::move(chat));
+                    break;
+                }
+            case Protocol::FRAMEOVER:
+                {
+                    FrameOver frameover;
+                    frameover.ParseFromArray(m_readBuff + 8, len - 4);
+                    m_server->Response(sock, std::move(frameover));
+                    break;
+                }
+            case Protocol::GAMEOVER:
+                {
+                    GameOver gameover;
+                    gameover.ParseFromArray(m_readBuff + 8, len - 4);
+                    m_server->Response(sock, std::move(gameover));
                     break;
                 }
         }
         return true;
     }
 
-    // 只调用一次WriteN，否则如果在客户端close之后还write的话会被信号量SIGPIPE中断服务器
+    void MessageProcesser::Send(int sock, Protocol protocol, google::protobuf::Message *response)
+    {
+        size_t sz = response->ByteSizeLong();
+        void *buff = malloc(sz);
+        response->SerializeToArray(buff, sz);
+        std::cout << "the message size = " << sz << "\n";
+        Send(sock, static_cast<int>(protocol), buff, sz);
+        free(buff);
+    }
+
+    /*
+    void handle_sigpipe(int sig)
+    {
+        printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
+        exit(EXIT_FAILURE);
+    }
+    */
+    
     void MessageProcesser::Send(int sock, int protocol, void* msg, int sz)
     {
         if (8 + sz > BUFF_SIZE)
@@ -169,6 +206,8 @@ namespace WZRY
         }
         int len = htonl(4 + sz);
         protocol = htonl(protocol);
+        
+        // 只调用一次WriteN，否则如果在客户端close之后还write的话会被信号量SIGPIPE中断服务器
         memcpy(m_writeBuff, &len, 4);
         memcpy(m_writeBuff + 4, &protocol, 4);
         memcpy(m_writeBuff + 8, msg, sz);
@@ -177,6 +216,16 @@ namespace WZRY
             CloseRequest cls;
             m_server->Response(sock, std::move(cls));
         }
+        
+        /*
+        signal(SIGPIPE, handle_sigpipe);
+        
+        if ((-1 == WriteN(sock, &len, 4)) || (-1 == WriteN(sock, &protocol, 4)) || (-1 == WriteN(sock, msg, sz)))
+        {
+            CloseRequest cls;
+            m_server->Response(sock, std::move(cls));
+        }
+        */
     }
 
 }  // namespace WZRY

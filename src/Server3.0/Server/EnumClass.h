@@ -1,9 +1,11 @@
 #ifndef _ENUMCLASS_H_
 #define _ENUMCLASS_H_
 
-#define LISTEN_SIZE 100
+#define EPOLL_SIZE 101
 #define BUFF_SIZE 1024
-#define MAX_CONNECT 99
+#define MAX_CONNECT 100
+#define SOLO_BATTLE_SIZE 2
+
 
 namespace WZRY
 {
@@ -14,8 +16,12 @@ namespace WZRY
         LOGIN = 1,
         REGISTER = 2,
         MATCH = 3,
-        CHAT = 4,
-        SKILL = 5
+
+        MOVE = 4,
+        SKILL = 5,
+        CHAT = 6,
+        FRAMEOVER = 7,
+        GAMEOVER = 8
     };
 
 }  // namespace WZRY

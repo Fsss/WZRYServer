@@ -23,6 +23,8 @@ int main(int argc, char** argv)
 
 /*
 
-g++ -g -pthread -lprotobuf -Wall -std=c++11 Epoll.cpp main.cpp MainServer.cpp MessageProcesser.cpp Server.cpp WZRYMessageProto.pb.cc -o RunServer
+protoc -I=./ --cpp_out=./ WZRYMessageProto.proto
+
+g++ -g -D_GLIBCXX_USE_NANOSLEEP -pthread -lprotobuf -Wall -std=c++11 BattleServer.cpp Epoll.cpp main.cpp MainServer.cpp MessageProcesser.cpp Server.cpp WZRYMessageProto.pb.cc -o RunServer
 
 */

@@ -38,28 +38,34 @@ message MatchRequest
 message MatchResponse
 {
     bool issuccess = 1;
-    string matchmessage = 2;
+    int32 id = 2;
+    string matchmessage = 3;
 }
 
-message ChatRequest
+message MoveData
 {
     int32 id = 1;
-    string chatmessage = 2;
-}
-message ChatResponse
-{
-    int32 id = 1;
-    string chatmessage = 2;
+    float x = 2;
+    float y = 3;
+    float z = 4;
 }
 
-message SkillRequest
-{
-    int32 id = 1;
-    int32 skillid = 2;
-}
-message SkillResponse
+message SkillData
 {
     int32 id = 1;
     int32 skillid = 2;
 }
 
+message ChatData
+{
+    int32 id = 1;
+    string charmessage = 2;
+}
+
+message FrameOver
+{
+}
+
+message GameOver
+{
+}

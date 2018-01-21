@@ -36,7 +36,7 @@ namespace protobuf_WZRYMessageProto_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[11];
+  static const ::google::protobuf::internal::ParseTable schema[12];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -56,14 +56,16 @@ void InitDefaultsMatchRequestImpl();
 void InitDefaultsMatchRequest();
 void InitDefaultsMatchResponseImpl();
 void InitDefaultsMatchResponse();
-void InitDefaultsChatRequestImpl();
-void InitDefaultsChatRequest();
-void InitDefaultsChatResponseImpl();
-void InitDefaultsChatResponse();
-void InitDefaultsSkillRequestImpl();
-void InitDefaultsSkillRequest();
-void InitDefaultsSkillResponseImpl();
-void InitDefaultsSkillResponse();
+void InitDefaultsMoveDataImpl();
+void InitDefaultsMoveData();
+void InitDefaultsSkillDataImpl();
+void InitDefaultsSkillData();
+void InitDefaultsChatDataImpl();
+void InitDefaultsChatData();
+void InitDefaultsFrameOverImpl();
+void InitDefaultsFrameOver();
+void InitDefaultsGameOverImpl();
+void InitDefaultsGameOver();
 inline void InitDefaults() {
   InitDefaultsCloseRequest();
   InitDefaultsLoginRequest();
@@ -72,22 +74,26 @@ inline void InitDefaults() {
   InitDefaultsRegisterResponse();
   InitDefaultsMatchRequest();
   InitDefaultsMatchResponse();
-  InitDefaultsChatRequest();
-  InitDefaultsChatResponse();
-  InitDefaultsSkillRequest();
-  InitDefaultsSkillResponse();
+  InitDefaultsMoveData();
+  InitDefaultsSkillData();
+  InitDefaultsChatData();
+  InitDefaultsFrameOver();
+  InitDefaultsGameOver();
 }
 }  // namespace protobuf_WZRYMessageProto_2eproto
 namespace WZRY {
-class ChatRequest;
-class ChatRequestDefaultTypeInternal;
-extern ChatRequestDefaultTypeInternal _ChatRequest_default_instance_;
-class ChatResponse;
-class ChatResponseDefaultTypeInternal;
-extern ChatResponseDefaultTypeInternal _ChatResponse_default_instance_;
+class ChatData;
+class ChatDataDefaultTypeInternal;
+extern ChatDataDefaultTypeInternal _ChatData_default_instance_;
 class CloseRequest;
 class CloseRequestDefaultTypeInternal;
 extern CloseRequestDefaultTypeInternal _CloseRequest_default_instance_;
+class FrameOver;
+class FrameOverDefaultTypeInternal;
+extern FrameOverDefaultTypeInternal _FrameOver_default_instance_;
+class GameOver;
+class GameOverDefaultTypeInternal;
+extern GameOverDefaultTypeInternal _GameOver_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
@@ -100,18 +106,18 @@ extern MatchRequestDefaultTypeInternal _MatchRequest_default_instance_;
 class MatchResponse;
 class MatchResponseDefaultTypeInternal;
 extern MatchResponseDefaultTypeInternal _MatchResponse_default_instance_;
+class MoveData;
+class MoveDataDefaultTypeInternal;
+extern MoveDataDefaultTypeInternal _MoveData_default_instance_;
 class RegisterRequest;
 class RegisterRequestDefaultTypeInternal;
 extern RegisterRequestDefaultTypeInternal _RegisterRequest_default_instance_;
 class RegisterResponse;
 class RegisterResponseDefaultTypeInternal;
 extern RegisterResponseDefaultTypeInternal _RegisterResponse_default_instance_;
-class SkillRequest;
-class SkillRequestDefaultTypeInternal;
-extern SkillRequestDefaultTypeInternal _SkillRequest_default_instance_;
-class SkillResponse;
-class SkillResponseDefaultTypeInternal;
-extern SkillResponseDefaultTypeInternal _SkillResponse_default_instance_;
+class SkillData;
+class SkillDataDefaultTypeInternal;
+extern SkillDataDefaultTypeInternal _SkillData_default_instance_;
 }  // namespace WZRY
 namespace WZRY {
 
@@ -876,9 +882,9 @@ class MatchResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // string matchmessage = 2;
+  // string matchmessage = 3;
   void clear_matchmessage();
-  static const int kMatchmessageFieldNumber = 2;
+  static const int kMatchmessageFieldNumber = 3;
   const ::std::string& matchmessage() const;
   void set_matchmessage(const ::std::string& value);
   #if LANG_CXX11
@@ -896,36 +902,43 @@ class MatchResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   bool issuccess() const;
   void set_issuccess(bool value);
 
+  // int32 id = 2;
+  void clear_id();
+  static const int kIdFieldNumber = 2;
+  ::google::protobuf::int32 id() const;
+  void set_id(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:WZRY.MatchResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr matchmessage_;
   bool issuccess_;
+  ::google::protobuf::int32 id_;
   mutable int _cached_size_;
   friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
   friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsMatchResponseImpl();
 };
 // -------------------------------------------------------------------
 
-class ChatRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.ChatRequest) */ {
+class MoveData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.MoveData) */ {
  public:
-  ChatRequest();
-  virtual ~ChatRequest();
+  MoveData();
+  virtual ~MoveData();
 
-  ChatRequest(const ChatRequest& from);
+  MoveData(const MoveData& from);
 
-  inline ChatRequest& operator=(const ChatRequest& from) {
+  inline MoveData& operator=(const MoveData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ChatRequest(ChatRequest&& from) noexcept
-    : ChatRequest() {
+  MoveData(MoveData&& from) noexcept
+    : MoveData() {
     *this = ::std::move(from);
   }
 
-  inline ChatRequest& operator=(ChatRequest&& from) noexcept {
+  inline MoveData& operator=(MoveData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -935,30 +948,30 @@ class ChatRequest : public ::google::protobuf::Message /* @@protoc_insertion_poi
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ChatRequest& default_instance();
+  static const MoveData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ChatRequest* internal_default_instance() {
-    return reinterpret_cast<const ChatRequest*>(
-               &_ChatRequest_default_instance_);
+  static inline const MoveData* internal_default_instance() {
+    return reinterpret_cast<const MoveData*>(
+               &_MoveData_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     7;
 
-  void Swap(ChatRequest* other);
-  friend void swap(ChatRequest& a, ChatRequest& b) {
+  void Swap(MoveData* other);
+  friend void swap(MoveData& a, MoveData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ChatRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline MoveData* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  ChatRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  MoveData* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const ChatRequest& from);
-  void MergeFrom(const ChatRequest& from);
+  void CopyFrom(const MoveData& from);
+  void MergeFrom(const MoveData& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -974,7 +987,7 @@ class ChatRequest : public ::google::protobuf::Message /* @@protoc_insertion_poi
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(ChatRequest* other);
+  void InternalSwap(MoveData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -990,56 +1003,62 @@ class ChatRequest : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // string chatmessage = 2;
-  void clear_chatmessage();
-  static const int kChatmessageFieldNumber = 2;
-  const ::std::string& chatmessage() const;
-  void set_chatmessage(const ::std::string& value);
-  #if LANG_CXX11
-  void set_chatmessage(::std::string&& value);
-  #endif
-  void set_chatmessage(const char* value);
-  void set_chatmessage(const char* value, size_t size);
-  ::std::string* mutable_chatmessage();
-  ::std::string* release_chatmessage();
-  void set_allocated_chatmessage(::std::string* chatmessage);
-
   // int32 id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::int32 id() const;
   void set_id(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:WZRY.ChatRequest)
+  // float x = 2;
+  void clear_x();
+  static const int kXFieldNumber = 2;
+  float x() const;
+  void set_x(float value);
+
+  // float y = 3;
+  void clear_y();
+  static const int kYFieldNumber = 3;
+  float y() const;
+  void set_y(float value);
+
+  // float z = 4;
+  void clear_z();
+  static const int kZFieldNumber = 4;
+  float z() const;
+  void set_z(float value);
+
+  // @@protoc_insertion_point(class_scope:WZRY.MoveData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr chatmessage_;
   ::google::protobuf::int32 id_;
+  float x_;
+  float y_;
+  float z_;
   mutable int _cached_size_;
   friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
-  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsChatRequestImpl();
+  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsMoveDataImpl();
 };
 // -------------------------------------------------------------------
 
-class ChatResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.ChatResponse) */ {
+class SkillData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.SkillData) */ {
  public:
-  ChatResponse();
-  virtual ~ChatResponse();
+  SkillData();
+  virtual ~SkillData();
 
-  ChatResponse(const ChatResponse& from);
+  SkillData(const SkillData& from);
 
-  inline ChatResponse& operator=(const ChatResponse& from) {
+  inline SkillData& operator=(const SkillData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ChatResponse(ChatResponse&& from) noexcept
-    : ChatResponse() {
+  SkillData(SkillData&& from) noexcept
+    : SkillData() {
     *this = ::std::move(from);
   }
 
-  inline ChatResponse& operator=(ChatResponse&& from) noexcept {
+  inline SkillData& operator=(SkillData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1049,30 +1068,30 @@ class ChatResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ChatResponse& default_instance();
+  static const SkillData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ChatResponse* internal_default_instance() {
-    return reinterpret_cast<const ChatResponse*>(
-               &_ChatResponse_default_instance_);
+  static inline const SkillData* internal_default_instance() {
+    return reinterpret_cast<const SkillData*>(
+               &_SkillData_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     8;
 
-  void Swap(ChatResponse* other);
-  friend void swap(ChatResponse& a, ChatResponse& b) {
+  void Swap(SkillData* other);
+  friend void swap(SkillData& a, SkillData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ChatResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline SkillData* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  ChatResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  SkillData* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const ChatResponse& from);
-  void MergeFrom(const ChatResponse& from);
+  void CopyFrom(const SkillData& from);
+  void MergeFrom(const SkillData& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1088,7 +1107,7 @@ class ChatResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(ChatResponse* other);
+  void InternalSwap(SkillData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1104,56 +1123,48 @@ class ChatResponse : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // string chatmessage = 2;
-  void clear_chatmessage();
-  static const int kChatmessageFieldNumber = 2;
-  const ::std::string& chatmessage() const;
-  void set_chatmessage(const ::std::string& value);
-  #if LANG_CXX11
-  void set_chatmessage(::std::string&& value);
-  #endif
-  void set_chatmessage(const char* value);
-  void set_chatmessage(const char* value, size_t size);
-  ::std::string* mutable_chatmessage();
-  ::std::string* release_chatmessage();
-  void set_allocated_chatmessage(::std::string* chatmessage);
-
   // int32 id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::int32 id() const;
   void set_id(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:WZRY.ChatResponse)
+  // int32 skillid = 2;
+  void clear_skillid();
+  static const int kSkillidFieldNumber = 2;
+  ::google::protobuf::int32 skillid() const;
+  void set_skillid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WZRY.SkillData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr chatmessage_;
   ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 skillid_;
   mutable int _cached_size_;
   friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
-  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsChatResponseImpl();
+  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsSkillDataImpl();
 };
 // -------------------------------------------------------------------
 
-class SkillRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.SkillRequest) */ {
+class ChatData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.ChatData) */ {
  public:
-  SkillRequest();
-  virtual ~SkillRequest();
+  ChatData();
+  virtual ~ChatData();
 
-  SkillRequest(const SkillRequest& from);
+  ChatData(const ChatData& from);
 
-  inline SkillRequest& operator=(const SkillRequest& from) {
+  inline ChatData& operator=(const ChatData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SkillRequest(SkillRequest&& from) noexcept
-    : SkillRequest() {
+  ChatData(ChatData&& from) noexcept
+    : ChatData() {
     *this = ::std::move(from);
   }
 
-  inline SkillRequest& operator=(SkillRequest&& from) noexcept {
+  inline ChatData& operator=(ChatData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1163,30 +1174,30 @@ class SkillRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SkillRequest& default_instance();
+  static const ChatData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SkillRequest* internal_default_instance() {
-    return reinterpret_cast<const SkillRequest*>(
-               &_SkillRequest_default_instance_);
+  static inline const ChatData* internal_default_instance() {
+    return reinterpret_cast<const ChatData*>(
+               &_ChatData_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     9;
 
-  void Swap(SkillRequest* other);
-  friend void swap(SkillRequest& a, SkillRequest& b) {
+  void Swap(ChatData* other);
+  friend void swap(ChatData& a, ChatData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SkillRequest* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline ChatData* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SkillRequest* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  ChatData* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SkillRequest& from);
-  void MergeFrom(const SkillRequest& from);
+  void CopyFrom(const ChatData& from);
+  void MergeFrom(const ChatData& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1202,7 +1213,7 @@ class SkillRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SkillRequest* other);
+  void InternalSwap(ChatData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1218,48 +1229,56 @@ class SkillRequest : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
+  // string charmessage = 2;
+  void clear_charmessage();
+  static const int kCharmessageFieldNumber = 2;
+  const ::std::string& charmessage() const;
+  void set_charmessage(const ::std::string& value);
+  #if LANG_CXX11
+  void set_charmessage(::std::string&& value);
+  #endif
+  void set_charmessage(const char* value);
+  void set_charmessage(const char* value, size_t size);
+  ::std::string* mutable_charmessage();
+  ::std::string* release_charmessage();
+  void set_allocated_charmessage(::std::string* charmessage);
+
   // int32 id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
   ::google::protobuf::int32 id() const;
   void set_id(::google::protobuf::int32 value);
 
-  // int32 skillid = 2;
-  void clear_skillid();
-  static const int kSkillidFieldNumber = 2;
-  ::google::protobuf::int32 skillid() const;
-  void set_skillid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:WZRY.SkillRequest)
+  // @@protoc_insertion_point(class_scope:WZRY.ChatData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr charmessage_;
   ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 skillid_;
   mutable int _cached_size_;
   friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
-  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsSkillRequestImpl();
+  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsChatDataImpl();
 };
 // -------------------------------------------------------------------
 
-class SkillResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.SkillResponse) */ {
+class FrameOver : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.FrameOver) */ {
  public:
-  SkillResponse();
-  virtual ~SkillResponse();
+  FrameOver();
+  virtual ~FrameOver();
 
-  SkillResponse(const SkillResponse& from);
+  FrameOver(const FrameOver& from);
 
-  inline SkillResponse& operator=(const SkillResponse& from) {
+  inline FrameOver& operator=(const FrameOver& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SkillResponse(SkillResponse&& from) noexcept
-    : SkillResponse() {
+  FrameOver(FrameOver&& from) noexcept
+    : FrameOver() {
     *this = ::std::move(from);
   }
 
-  inline SkillResponse& operator=(SkillResponse&& from) noexcept {
+  inline FrameOver& operator=(FrameOver&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1269,30 +1288,30 @@ class SkillResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SkillResponse& default_instance();
+  static const FrameOver& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SkillResponse* internal_default_instance() {
-    return reinterpret_cast<const SkillResponse*>(
-               &_SkillResponse_default_instance_);
+  static inline const FrameOver* internal_default_instance() {
+    return reinterpret_cast<const FrameOver*>(
+               &_FrameOver_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     10;
 
-  void Swap(SkillResponse* other);
-  friend void swap(SkillResponse& a, SkillResponse& b) {
+  void Swap(FrameOver* other);
+  friend void swap(FrameOver& a, FrameOver& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SkillResponse* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline FrameOver* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  SkillResponse* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  FrameOver* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const SkillResponse& from);
-  void MergeFrom(const SkillResponse& from);
+  void CopyFrom(const FrameOver& from);
+  void MergeFrom(const FrameOver& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1308,7 +1327,7 @@ class SkillResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(SkillResponse* other);
+  void InternalSwap(FrameOver* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1324,27 +1343,105 @@ class SkillResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // int32 id = 1;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::int32 id() const;
-  void set_id(::google::protobuf::int32 value);
-
-  // int32 skillid = 2;
-  void clear_skillid();
-  static const int kSkillidFieldNumber = 2;
-  ::google::protobuf::int32 skillid() const;
-  void set_skillid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:WZRY.SkillResponse)
+  // @@protoc_insertion_point(class_scope:WZRY.FrameOver)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 skillid_;
   mutable int _cached_size_;
   friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
-  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsSkillResponseImpl();
+  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsFrameOverImpl();
+};
+// -------------------------------------------------------------------
+
+class GameOver : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WZRY.GameOver) */ {
+ public:
+  GameOver();
+  virtual ~GameOver();
+
+  GameOver(const GameOver& from);
+
+  inline GameOver& operator=(const GameOver& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GameOver(GameOver&& from) noexcept
+    : GameOver() {
+    *this = ::std::move(from);
+  }
+
+  inline GameOver& operator=(GameOver&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const GameOver& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GameOver* internal_default_instance() {
+    return reinterpret_cast<const GameOver*>(
+               &_GameOver_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    11;
+
+  void Swap(GameOver* other);
+  friend void swap(GameOver& a, GameOver& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GameOver* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  GameOver* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const GameOver& from);
+  void MergeFrom(const GameOver& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(GameOver* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:WZRY.GameOver)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_WZRYMessageProto_2eproto::TableStruct;
+  friend void ::protobuf_WZRYMessageProto_2eproto::InitDefaultsGameOverImpl();
 };
 // ===================================================================
 
@@ -1783,7 +1880,21 @@ inline void MatchResponse::set_issuccess(bool value) {
   // @@protoc_insertion_point(field_set:WZRY.MatchResponse.issuccess)
 }
 
-// string matchmessage = 2;
+// int32 id = 2;
+inline void MatchResponse::clear_id() {
+  id_ = 0;
+}
+inline ::google::protobuf::int32 MatchResponse::id() const {
+  // @@protoc_insertion_point(field_get:WZRY.MatchResponse.id)
+  return id_;
+}
+inline void MatchResponse::set_id(::google::protobuf::int32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.MatchResponse.id)
+}
+
+// string matchmessage = 3;
 inline void MatchResponse::clear_matchmessage() {
   matchmessage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1838,213 +1949,180 @@ inline void MatchResponse::set_allocated_matchmessage(::std::string* matchmessag
 
 // -------------------------------------------------------------------
 
-// ChatRequest
+// MoveData
 
 // int32 id = 1;
-inline void ChatRequest::clear_id() {
+inline void MoveData::clear_id() {
   id_ = 0;
 }
-inline ::google::protobuf::int32 ChatRequest::id() const {
-  // @@protoc_insertion_point(field_get:WZRY.ChatRequest.id)
+inline ::google::protobuf::int32 MoveData::id() const {
+  // @@protoc_insertion_point(field_get:WZRY.MoveData.id)
   return id_;
 }
-inline void ChatRequest::set_id(::google::protobuf::int32 value) {
+inline void MoveData::set_id(::google::protobuf::int32 value) {
   
   id_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.ChatRequest.id)
+  // @@protoc_insertion_point(field_set:WZRY.MoveData.id)
 }
 
-// string chatmessage = 2;
-inline void ChatRequest::clear_chatmessage() {
-  chatmessage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// float x = 2;
+inline void MoveData::clear_x() {
+  x_ = 0;
 }
-inline const ::std::string& ChatRequest::chatmessage() const {
-  // @@protoc_insertion_point(field_get:WZRY.ChatRequest.chatmessage)
-  return chatmessage_.GetNoArena();
+inline float MoveData::x() const {
+  // @@protoc_insertion_point(field_get:WZRY.MoveData.x)
+  return x_;
 }
-inline void ChatRequest::set_chatmessage(const ::std::string& value) {
+inline void MoveData::set_x(float value) {
   
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:WZRY.ChatRequest.chatmessage)
+  x_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.MoveData.x)
+}
+
+// float y = 3;
+inline void MoveData::clear_y() {
+  y_ = 0;
+}
+inline float MoveData::y() const {
+  // @@protoc_insertion_point(field_get:WZRY.MoveData.y)
+  return y_;
+}
+inline void MoveData::set_y(float value) {
+  
+  y_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.MoveData.y)
+}
+
+// float z = 4;
+inline void MoveData::clear_z() {
+  z_ = 0;
+}
+inline float MoveData::z() const {
+  // @@protoc_insertion_point(field_get:WZRY.MoveData.z)
+  return z_;
+}
+inline void MoveData::set_z(float value) {
+  
+  z_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.MoveData.z)
+}
+
+// -------------------------------------------------------------------
+
+// SkillData
+
+// int32 id = 1;
+inline void SkillData::clear_id() {
+  id_ = 0;
+}
+inline ::google::protobuf::int32 SkillData::id() const {
+  // @@protoc_insertion_point(field_get:WZRY.SkillData.id)
+  return id_;
+}
+inline void SkillData::set_id(::google::protobuf::int32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.SkillData.id)
+}
+
+// int32 skillid = 2;
+inline void SkillData::clear_skillid() {
+  skillid_ = 0;
+}
+inline ::google::protobuf::int32 SkillData::skillid() const {
+  // @@protoc_insertion_point(field_get:WZRY.SkillData.skillid)
+  return skillid_;
+}
+inline void SkillData::set_skillid(::google::protobuf::int32 value) {
+  
+  skillid_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.SkillData.skillid)
+}
+
+// -------------------------------------------------------------------
+
+// ChatData
+
+// int32 id = 1;
+inline void ChatData::clear_id() {
+  id_ = 0;
+}
+inline ::google::protobuf::int32 ChatData::id() const {
+  // @@protoc_insertion_point(field_get:WZRY.ChatData.id)
+  return id_;
+}
+inline void ChatData::set_id(::google::protobuf::int32 value) {
+  
+  id_ = value;
+  // @@protoc_insertion_point(field_set:WZRY.ChatData.id)
+}
+
+// string charmessage = 2;
+inline void ChatData::clear_charmessage() {
+  charmessage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& ChatData::charmessage() const {
+  // @@protoc_insertion_point(field_get:WZRY.ChatData.charmessage)
+  return charmessage_.GetNoArena();
+}
+inline void ChatData::set_charmessage(const ::std::string& value) {
+  
+  charmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:WZRY.ChatData.charmessage)
 }
 #if LANG_CXX11
-inline void ChatRequest::set_chatmessage(::std::string&& value) {
+inline void ChatData::set_charmessage(::std::string&& value) {
   
-  chatmessage_.SetNoArena(
+  charmessage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:WZRY.ChatRequest.chatmessage)
+  // @@protoc_insertion_point(field_set_rvalue:WZRY.ChatData.charmessage)
 }
 #endif
-inline void ChatRequest::set_chatmessage(const char* value) {
+inline void ChatData::set_charmessage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:WZRY.ChatRequest.chatmessage)
+  charmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:WZRY.ChatData.charmessage)
 }
-inline void ChatRequest::set_chatmessage(const char* value, size_t size) {
+inline void ChatData::set_charmessage(const char* value, size_t size) {
   
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  charmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:WZRY.ChatRequest.chatmessage)
+  // @@protoc_insertion_point(field_set_pointer:WZRY.ChatData.charmessage)
 }
-inline ::std::string* ChatRequest::mutable_chatmessage() {
+inline ::std::string* ChatData::mutable_charmessage() {
   
-  // @@protoc_insertion_point(field_mutable:WZRY.ChatRequest.chatmessage)
-  return chatmessage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:WZRY.ChatData.charmessage)
+  return charmessage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ChatRequest::release_chatmessage() {
-  // @@protoc_insertion_point(field_release:WZRY.ChatRequest.chatmessage)
+inline ::std::string* ChatData::release_charmessage() {
+  // @@protoc_insertion_point(field_release:WZRY.ChatData.charmessage)
   
-  return chatmessage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return charmessage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ChatRequest::set_allocated_chatmessage(::std::string* chatmessage) {
-  if (chatmessage != NULL) {
+inline void ChatData::set_allocated_charmessage(::std::string* charmessage) {
+  if (charmessage != NULL) {
     
   } else {
     
   }
-  chatmessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), chatmessage);
-  // @@protoc_insertion_point(field_set_allocated:WZRY.ChatRequest.chatmessage)
+  charmessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), charmessage);
+  // @@protoc_insertion_point(field_set_allocated:WZRY.ChatData.charmessage)
 }
 
 // -------------------------------------------------------------------
 
-// ChatResponse
-
-// int32 id = 1;
-inline void ChatResponse::clear_id() {
-  id_ = 0;
-}
-inline ::google::protobuf::int32 ChatResponse::id() const {
-  // @@protoc_insertion_point(field_get:WZRY.ChatResponse.id)
-  return id_;
-}
-inline void ChatResponse::set_id(::google::protobuf::int32 value) {
-  
-  id_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.ChatResponse.id)
-}
-
-// string chatmessage = 2;
-inline void ChatResponse::clear_chatmessage() {
-  chatmessage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& ChatResponse::chatmessage() const {
-  // @@protoc_insertion_point(field_get:WZRY.ChatResponse.chatmessage)
-  return chatmessage_.GetNoArena();
-}
-inline void ChatResponse::set_chatmessage(const ::std::string& value) {
-  
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:WZRY.ChatResponse.chatmessage)
-}
-#if LANG_CXX11
-inline void ChatResponse::set_chatmessage(::std::string&& value) {
-  
-  chatmessage_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:WZRY.ChatResponse.chatmessage)
-}
-#endif
-inline void ChatResponse::set_chatmessage(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:WZRY.ChatResponse.chatmessage)
-}
-inline void ChatResponse::set_chatmessage(const char* value, size_t size) {
-  
-  chatmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:WZRY.ChatResponse.chatmessage)
-}
-inline ::std::string* ChatResponse::mutable_chatmessage() {
-  
-  // @@protoc_insertion_point(field_mutable:WZRY.ChatResponse.chatmessage)
-  return chatmessage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* ChatResponse::release_chatmessage() {
-  // @@protoc_insertion_point(field_release:WZRY.ChatResponse.chatmessage)
-  
-  return chatmessage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void ChatResponse::set_allocated_chatmessage(::std::string* chatmessage) {
-  if (chatmessage != NULL) {
-    
-  } else {
-    
-  }
-  chatmessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), chatmessage);
-  // @@protoc_insertion_point(field_set_allocated:WZRY.ChatResponse.chatmessage)
-}
+// FrameOver
 
 // -------------------------------------------------------------------
 
-// SkillRequest
-
-// int32 id = 1;
-inline void SkillRequest::clear_id() {
-  id_ = 0;
-}
-inline ::google::protobuf::int32 SkillRequest::id() const {
-  // @@protoc_insertion_point(field_get:WZRY.SkillRequest.id)
-  return id_;
-}
-inline void SkillRequest::set_id(::google::protobuf::int32 value) {
-  
-  id_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.SkillRequest.id)
-}
-
-// int32 skillid = 2;
-inline void SkillRequest::clear_skillid() {
-  skillid_ = 0;
-}
-inline ::google::protobuf::int32 SkillRequest::skillid() const {
-  // @@protoc_insertion_point(field_get:WZRY.SkillRequest.skillid)
-  return skillid_;
-}
-inline void SkillRequest::set_skillid(::google::protobuf::int32 value) {
-  
-  skillid_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.SkillRequest.skillid)
-}
-
-// -------------------------------------------------------------------
-
-// SkillResponse
-
-// int32 id = 1;
-inline void SkillResponse::clear_id() {
-  id_ = 0;
-}
-inline ::google::protobuf::int32 SkillResponse::id() const {
-  // @@protoc_insertion_point(field_get:WZRY.SkillResponse.id)
-  return id_;
-}
-inline void SkillResponse::set_id(::google::protobuf::int32 value) {
-  
-  id_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.SkillResponse.id)
-}
-
-// int32 skillid = 2;
-inline void SkillResponse::clear_skillid() {
-  skillid_ = 0;
-}
-inline ::google::protobuf::int32 SkillResponse::skillid() const {
-  // @@protoc_insertion_point(field_get:WZRY.SkillResponse.skillid)
-  return skillid_;
-}
-inline void SkillResponse::set_skillid(::google::protobuf::int32 value) {
-  
-  skillid_ = value;
-  // @@protoc_insertion_point(field_set:WZRY.SkillResponse.skillid)
-}
+// GameOver
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
