@@ -1,7 +1,6 @@
 #ifndef _EPOLL_H_
 #define _EPOLL_H_
 
-#include <mutex>
 #include <sys/epoll.h>
 
 
@@ -23,7 +22,6 @@ namespace WZRY
     private:
         int m_size;
         int m_epollfd;
-        std::mutex m_mutex;
         epoll_event* m_events;
     };
 

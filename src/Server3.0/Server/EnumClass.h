@@ -4,8 +4,13 @@
 #define EPOLL_SIZE 101
 #define BUFF_SIZE 1024
 #define MAX_CONNECT 100
+#define ROOM_SIZE 100
 #define SOLO_BATTLE_SIZE 2
+#define FRAME_INTERVAL 20
+#define EPOLL_WAIT_TIMEOUT 3
 
+#define MIN_PROTOCOL 0
+#define MAX_PROTOCOL 8
 
 namespace WZRY
 {

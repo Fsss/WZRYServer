@@ -101,16 +101,15 @@ namespace WZRY
             /// receive protocol
             memcpy(&protocol, m_readBuff + 4, 4);
             protocol = ntohl(protocol);
-            /// 打印长度和协议
-            printf("message length : %d    protocol : %d\n", len, protocol);
-
-            if (protocol < 1 || protocol > 5)
-            {
-                printf("Receive a wrong protocol!\n");
-                return true;
-            }
         }
-        printf("Receive client : %d a new message!\n", sock);
+        
+        if (protocol < MIN_PROTOCOL || protocol > MAX_PROTOCOL)
+        {
+            printf("Receive a wrong protocol!\n");
+            return true;
+        }
+
+        printf("Receive client : %d a new message! len = %d   protocol = %d\n", sock, len, protocol);
         switch (static_cast<Protocol>(protocol))
         {
             case Protocol::CLOSE:
@@ -211,6 +210,7 @@ namespace WZRY
         memcpy(m_writeBuff, &len, 4);
         memcpy(m_writeBuff + 4, &protocol, 4);
         memcpy(m_writeBuff + 8, msg, sz);
+        std::cout << "The message size = " << 8 + sz << "  sock = " << sock << "  len = " << ntohl(len) << "  protocol = " << ntohl(protocol) << "\n";
         if (-1 == WriteN(sock, m_writeBuff, 8 + sz))
         {
             CloseRequest cls;

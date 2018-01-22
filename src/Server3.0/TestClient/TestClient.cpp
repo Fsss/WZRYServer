@@ -9,6 +9,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#define BUFF_SIZE 1024
+
 using namespace std;
 using namespace WZRY;
 
@@ -22,7 +24,6 @@ void TSend(int sock, int prtc, T message)
     // send len
     int len = htonl(4 + size);
     send(sock, &len, 4, 0);
-    exit(EXIT_FAILURE);
     // send protocol
     prtc = htonl(prtc);
     send(sock, &prtc, 4, 0);
@@ -33,48 +34,56 @@ void TSend(int sock, int prtc, T message)
     free(buff);
 }
 
-void Receive(int sock)
+
+
+int cacheLen = 0;
+char *cacheBuff = new char[BUFF_SIZE << 1];
+char *recvBuff = new char[BUFF_SIZE];
+
+void ReceiveMessage(int sock)
 {
-    int len, prtc;
-    // recv len
-    recv(sock, &len, 4, 0);
-    len = ntohl(len);
-    // recv prtc
-    recv(sock, &prtc, 4, 0);
-    prtc = ntohl(prtc);
-
-    printf("receive     %d  %d\n", len, prtc);
-    void *buff = malloc(len - 4);
-    int recvLen = recv(sock, buff, len - 4, 0);
-    printf("recv len = %d\n", recvLen);
-
-    switch (prtc)
+    int ret = recv(sock, recvBuff, BUFF_SIZE, 0);
+    memcpy(cacheBuff + cacheLen, recvBuff, ret);
+    cacheLen += ret;
+    printf("ret = %d     cacheLen = %d\n", ret, cacheLen);
+    while (cacheLen >= 4)
     {
-        case 1:
-            {
-                LoginResponse response;
-                response.ParseFromArray(buff, len - 4);
-                cout << response.issuccess() << "   " << response.message() << "\n";
-                break;
-            }
-        case 2:
-            {
-                RegisterResponse response;
-                response.ParseFromArray(buff, len - 4);
-                cout << response.issuccess() << "   " << response.message() << "\n";
-                break;
-            }
-        case 3:
-            {
-                MatchResponse response;
-                response.ParseFromArray(buff, len - 4);
-                cout << response.issuccess() << "   " << response.matchmessage() << "\n";
-                break;
-            }
+        int len;
+        memcpy(&len, cacheBuff, 4);
+        len = ntohl(len);
+        printf("len = %d\n", len);
+        if (cacheLen < len + 4)
+        {
+            return;
+        }
+        int protocol;
+        memcpy(&protocol, cacheBuff + 4, 4);
+        protocol = ntohl(protocol);
+        char *buff = new char[len - 4];
+        memcpy(buff, cacheBuff + 8, len - 4);
+        for (int i = len + 4; i < cacheLen; ++i)
+            cacheBuff[i - len - 4] = cacheBuff[i];
+        cacheLen -= len + 4;
+        printf("len = %d    protocol = %d\n", len, protocol);
+        switch (protocol)
+        {
+            case 3:
+                {
+                    MatchResponse match;
+                    match.ParseFromArray(buff, len - 4);
+                    cout << match.issuccess() << "   "  << match.id() << "   " << match.matchmessage() << "\n";
+                    break;
+                }
+            case 7:
+                {
+                    printf("Receive a frameover message!\n");
+                    break;
+                }
+        }
+        delete[] buff;
     }
-    // free buff
-    free(buff);
 }
+
 
 int main()
 {
@@ -89,83 +98,28 @@ int main()
 
     connect(client_fd, (struct sockaddr*)&server_addr, sizeof(server_addr));
 
+
     MatchRequest match;
     match.set_ismatch(true);
     match.set_matchtype(2);
     TSend(client_fd, 3, match);
-    //Receive(client_fd);
-    while (true)
-    {
-        std::cout << "wait a second!\n";
-        sleep(1);
-    }
-
-    /*
-    // test login
-    LoginRequest login;
-    login.set_islogin(true);
-    login.set_username("123");
-    login.set_passwd("123");
 
     int cnt = 0;
     while (true)
     {
-        printf("the send number = %d\n", ++cnt);
-        TSend(client_fd, 1, login);
-        Receive(client_fd);
-        //sleep(1);
+        ReceiveMessage(client_fd);
+        printf("Receive!                               %d\n", ++cnt);
+        if (cnt == 5000)
+        {
+            GameOver gameover;
+            TSend(client_fd, 8, gameover);
+            break;
+        }
     }
-    */
+
     
-    /*
-    // test login
-    login.set_islogin(true);
-    login.set_username("Fsss");
-    login.set_passwd("1234");
-    TSend(client_fd, 1, login);
-    Receive(client_fd);
+    sleep(10);
     
-
-    // test login
-    login.set_islogin(true);
-    login.set_username("123");
-    login.set_passwd("123");
-    TSend(client_fd, 1, login);
-    Receive(client_fd);
-
-    MatchRequest match;
-    match.set_ismatch(true);
-    match.set_matchtype(2);
-    TSend(client_fd, 3, match);
-    //Receive(client_fd);
-
-
-    // test register
-    
-    RegisterRequest regs;
-    regs.set_newusername("Fsss");
-    regs.set_newpasswd("12345");
-    TSend(client_fd, 2, regs);
-    Receive(client_fd);
-
-    //test register Fsss
-    login.set_islogin(true);
-    login.set_username("Fsss");
-    login.set_passwd("12345");
-    TSend(client_fd, 1, login);
-    Receive(client_fd);
-
-    regs.set_newusername("Fsss");
-    regs.set_newpasswd("123");
-    TSend(client_fd, 2, regs);
-    Receive(client_fd);
-
-    while (true)
-    {
-        cout << "Wait one second!\n";
-        sleep(1);
-    }
-    */
     close(client_fd);
     return 0;
 }

@@ -4,9 +4,14 @@
 #include "MessageProcesser.h"
 #include "WZRYMessageProto.pb.h"
 
+#include <thread>
+#include <chrono>
+#include <stdlib.h>
+#include <vector>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/time.h>
 #include <sys/epoll.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -18,7 +23,7 @@ namespace WZRY
 {
 
     Server::Server(int port)
-        : m_port(port), m_epoll(LISTEN_SIZE), m_messageProcesser(this)
+        : m_port(port), m_epoll(EPOLL_SIZE), m_messageProcesser(this)
     {
         // socket()
         m_listenfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -39,20 +44,23 @@ namespace WZRY
             printf("Set SO_REUSEADDR error!\n");
             return;
         }
-        // bind
+        // bind()
 	    if (bind(m_listenfd, (struct sockaddr*)&listen_addr, sizeof(listen_addr)) < 0)
 	    {
             printf("Server bind() error!\n");
 		    return;
 	    }
-	    // listen
+	    // listen()
 	    listen(m_listenfd, MAX_CONNECT);
-
+        // epoll add listenfd
         if (-1 == m_epoll.EpollCtlAdd(m_listenfd))
         {
             printf("Server epoll_ctl error!\n");
             return;
         }
+        // init
+        for (int i = 0; i < ROOM_SIZE; ++i)
+            m_roomSet[0].insert(i);
         // 初始users
         m_users["123"] = "123";
         printf("Server listen in port : %d ...\n", port);
@@ -61,13 +69,15 @@ namespace WZRY
     Server::~Server()
     {
         close(m_listenfd);
-        for (auto fd : m_connectSet)
-            DeleteConnect(fd);
+        for (std::set<int>::iterator it = m_connectSet.begin(); it != m_connectSet.end(); ++it)
+            Disconnect(*it);
     }
 
     void Server::ServerLoop()
     {
         printf("Server Loop running...\n");
+        long lastTime, nowTime;
+        lastTime = nowTime = GetCurrentTime();
         while (true)
         {
             int n = m_epoll.EpollWait();
@@ -79,7 +89,7 @@ namespace WZRY
                 if ((eventEvents & EPOLLERR) || (eventEvents & EPOLLHUP) || (!(eventEvents & EPOLLIN)))
 			    {
 				    printf("clientfd : %d error\n", eventFd);
-                    DeleteConnect(eventFd);
+                    Disconnect(eventFd);
 				    continue;
 			    } else if (eventFd == m_listenfd) {
                     struct sockaddr client_addr;
@@ -94,14 +104,28 @@ namespace WZRY
                     m_epoll.EpollCtlAdd(newClient);
                     m_connectSet.insert(newClient);
                 } else {
-                    /// 一直读直到没消息或消息不完整
+                    /// 从ET的epoll中读出所有的消息
                     while (m_messageProcesser.RecvPeek(eventFd));
                 }
+            }
+            // 发送帧结束包
+            nowTime = GetCurrentTime();
+            if (nowTime - lastTime > FRAME_INTERVAL)
+            {
+                lastTime = nowTime;
+                SendFrameOver();
             }
         }
     }
 
-    void Server::DeleteConnect(int sock)
+    long Server::GetCurrentTime()
+    {
+        struct timeval tv;    
+        gettimeofday(&tv,NULL);    
+        return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+    }
+
+    void Server::Disconnect(int sock)
     {
         printf("Client : %d close the connect.\n", sock);
         m_epoll.EpollCtlDel(sock);
@@ -123,13 +147,35 @@ namespace WZRY
         m_requestSoloBattleSet.insert(sock);
         if (m_requestSoloBattleSet.size() >= 2)
         {
+            if (0 == m_roomSet[0].size())
+            {
+                printf("No spare room!\n");
+                return;
+            }
             printf("Begin a solo battle!\n");
+            int roomId = *(m_roomSet[0].begin());
+            m_roomSet[0].erase(m_roomSet[0].begin());
+            m_roomSet[1].insert(roomId);
+
             int player1, player2;
-            player1 = *m_requestSoloBattleSet.begin();
+            player1 = *(m_requestSoloBattleSet.begin());
             m_requestSoloBattleSet.erase(m_requestSoloBattleSet.begin());
-            player2 = *m_requestSoloBattleSet.begin();
+            player2 = *(m_requestSoloBattleSet.begin());
             m_requestSoloBattleSet.erase(m_requestSoloBattleSet.begin());
-            (new BattleServer(&m_epoll, SOLO_BATTLE_SIZE, player1, player2))->BeginGame();
+
+            m_room[roomId].push_back(player1);
+            m_room[roomId].push_back(player2);
+
+            MatchResponse match;
+            match.set_issuccess(true);
+            match.set_matchmessage("匹配成功");
+
+            for (unsigned int i = 0; i < m_room[roomId].size(); ++i)
+            {
+                match.set_id(i + 1);
+                m_sockRoomId[m_room[roomId][i]] = roomId;
+                m_messageProcesser.Send(m_room[roomId][i], Protocol::MATCH, &match);
+            }
         }
     }
 
@@ -142,9 +188,18 @@ namespace WZRY
         }
     }
 
+    void Server::SendFrameOver()
+    {
+        FrameOver frameOver;
+        for (auto roomId : m_roomSet[1])
+            Response(roomId, frameOver);
+    }
+
+
+    /// lobby
     void Server::Response(int sock, CloseRequest login)
     {
-        DeleteConnect(sock);
+        Disconnect(sock);
     }
 
     void Server::Response(int sock, LoginRequest login)
@@ -160,6 +215,7 @@ namespace WZRY
                 {
                     response.set_issuccess(true);
                     response.set_message("登录成功");
+                    m_loginUsers[sock] = login.username();
                 }
                 else
                 {
@@ -206,7 +262,6 @@ namespace WZRY
         {
             if (2 == match.matchtype())
             {
-                // 请求solo比赛
                 RequestSoloBattle(sock);
             }
             else {
@@ -217,7 +272,6 @@ namespace WZRY
         {
             if (2 == match.matchtype())
             {
-                // 取消solo比赛
                 CancelSoloBattle(sock);
             }
             else {
@@ -226,33 +280,53 @@ namespace WZRY
         }
     }
 
+    /// game
+    void Server::Response(int sock, MoveData move)
+    {
+        int roomId = m_sockRoomId[sock];
+        for (unsigned int i = 0; i < m_room[roomId].size(); ++i)
+            m_messageProcesser.Send(m_room[roomId][i], Protocol::MOVE, &move);
+    }
+
+    void Server::Response(int sock, SkillData skill)
+    {
+        int roomId = m_sockRoomId[sock];
+        for (unsigned int i = 0; i < m_room[roomId].size(); ++i)
+            m_messageProcesser.Send(m_room[roomId][i], Protocol::SKILL, &skill);
+    }
+
+    void Server::Response(int sock, ChatData chat)
+    {
+        int roomId = m_sockRoomId[sock];
+        for (unsigned int i = 0; i < m_room[roomId].size(); ++i)
+            m_messageProcesser.Send(m_room[roomId][i], Protocol::CHAT, &chat);
+    }
+
+    void Server::Response(int roomId, FrameOver frameover)
+    {
+        for (unsigned int i = 0; i < m_room[roomId].size(); ++i)
+            m_messageProcesser.Send(m_room[roomId][i], Protocol::FRAMEOVER, &frameover);
+    }
+
+    void Server::Response(int sock, GameOver gameover)
+    {
+        int roomId = m_sockRoomId[sock];
+        for (std::vector<int>::iterator it = m_room[roomId].begin(); it != m_room[roomId].end(); ++it)
+        if (*it == sock)
+        {
+            m_room[roomId].erase(it);
+            break;
+        }
+        m_sockRoomId.erase(sock);
+        if (0 == m_room[roomId].size()) 
+        {
+            m_roomSet[1].erase(roomId);
+            m_roomSet[0].erase(roomId);
+        }
+    }
+
 
 }  // namespace WZRY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-#include "MainServer.h"
+#include "Server.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,9 +14,9 @@ int main(int argc, char** argv)
 
     short port = atoi(argv[1]);
 
-    WZRY::MainServer mainServer(port);
+    WZRY::Server server(port);
 
-    mainServer.MainServerLoop();
+    server.ServerLoop();
 
     return 0;
 }
@@ -25,6 +25,6 @@ int main(int argc, char** argv)
 
 protoc -I=./ --cpp_out=./ WZRYMessageProto.proto
 
-g++ -g -D_GLIBCXX_USE_NANOSLEEP -pthread -lprotobuf -Wall -std=c++11 BattleServer.cpp Epoll.cpp main.cpp MainServer.cpp MessageProcesser.cpp Server.cpp WZRYMessageProto.pb.cc -o RunServer
+g++ -g -D_GLIBCXX_USE_NANOSLEEP -pthread -lprotobuf -Wall -std=c++11 Epoll.cpp main.cpp MessageProcesser.cpp Server.cpp WZRYMessageProto.pb.cc -o RunServer
 
 */

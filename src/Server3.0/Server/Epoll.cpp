@@ -1,4 +1,5 @@
 #include "Epoll.h"
+#include "EnumClass.h"
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -21,12 +22,11 @@ namespace WZRY
 
     int Epoll::EpollWait()
     {
-        return epoll_wait(m_epollfd, m_events, m_size, -1);
+        return epoll_wait(m_epollfd, m_events, m_size, EPOLL_WAIT_TIMEOUT);
     }
 
     int Epoll::EpollCtlAdd(int sock)
     {
-        std::lock_guard<std::mutex> guard(m_mutex);
         // set socket O_NONBLOCK
         fcntl(sock, F_SETFL, fcntl(sock, F_GETFL, 0)|O_NONBLOCK);
         struct epoll_event event;
@@ -37,7 +37,6 @@ namespace WZRY
 
     int Epoll::EpollCtlDel(int sock)
     {
-        std::lock_guard<std::mutex> guard(m_mutex);
         struct epoll_event event;
 	    event.data.fd = sock;
 	    event.events = EPOLLIN|EPOLLET;
