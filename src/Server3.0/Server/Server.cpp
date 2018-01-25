@@ -110,7 +110,7 @@ namespace WZRY
             }
             // 发送帧结束包
             nowTime = GetCurrentTime();
-            if (nowTime - lastTime > FRAME_INTERVAL)
+            if (nowTime - lastTime >= FRAME_INTERVAL)
             {
                 lastTime = nowTime;
                 SendFrameOver();
